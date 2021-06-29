@@ -19,19 +19,13 @@ const refs = {
 };
 
 
-// создание разметки меню
+// разметка меню
 const cardsMenu = menuCardTemplate(menu);
 refs.menuContainer.insertAdjacentHTML('beforeend', cardsMenu);
 
-// Мой вариант создания разметки
-// const cardsMenu = createMenuCardsMarkup(menu);
-// refs.menuContainer.insertAdjacentHTML('beforeend', cardsMenu);
-// function createMenuCardsMarkup(menu) {
-//     return menu.map(item => menuCardTemplate(item)).join('');
-//     // аналог записи return menu.map(menuCardTemplate).join('');
-// };
 
-// смена темы сайта
+
+// смена темы 
 refs.switchInput.addEventListener('change', onSwitchChange);
 populateTheme();
 
@@ -53,22 +47,11 @@ function populateTheme() {
 
 
 
-// смена темы при нажатии на солнце или луну (работает, но есть проблемы с <use>)
+
 refs.iconMoon.addEventListener('click', onClickThemeSwitch);
 refs.iconSun.addEventListener('click', onClickThemeSwitch);
 
-// function onClickThemeSwitch(event) {
-//     const checked = !event.target.checked;
-//     if (checked) {
-//         document.body.classList.add(Theme.DARK);
-//     } else {
-//         document.body.classList.remove(Theme.DARK);
-//     }
-//     refs.switchInput.checked = checked;
-//     localStorage.setItem('dark', checked);
-// }
 
-// мой вариант
 function onClickThemeSwitch(event) {
 
     if (event.currentTarget === refs.iconMoon) {
@@ -82,17 +65,7 @@ function onClickThemeSwitch(event) {
     }
 };
 
-// Вариант Юрия
-// function populateTheme() {
-//     const getKeyLocalStorage = localStorage.getItem('dark');
-//     const stringD = Boolean(getKeyLocalStorage);
-//     if (stringD) document.body.classList.add(Theme.DARK);
-//     refs.switchInput.checked = stringD;
-// }
 
-
-// Иммитация нажатия кнопки, ввыводим в консоль название блюда
-// btnAddToBasket: document.querySelector('menu .card__button')
 refs.menuContainer.addEventListener('click', onCartBtnClick);
 
 function onCartBtnClick(event) {
